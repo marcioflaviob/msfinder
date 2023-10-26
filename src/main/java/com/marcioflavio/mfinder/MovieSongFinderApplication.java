@@ -11,12 +11,12 @@ import core.GLA;
 public class MovieSongFinderApplication {
 
 	public static void main(String[] args) throws IOException {
-		//SpringApplication.run(MovieSongFinderApplication.class, args);
-        GLA gla = new GLA();
+		SpringApplication.run(MovieSongFinderApplication.class, args);
+        /*GLA gla = new GLA();
         System.out.println("Searching...");
         long startMs = System.currentTimeMillis();
         System.out.println(gla.search("lucid dreams").getHits().get(0).fetchLyrics());
-        System.out.println(System.currentTimeMillis() - startMs + "ms");
+        System.out.println(System.currentTimeMillis() - startMs + "ms");*/
 	}
 
 }

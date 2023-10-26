@@ -1,8 +1,10 @@
 package com.marcioflavio.mfinder.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -13,6 +15,11 @@ public class GeniusAPIConfig {
 
     private String getApiKey() {
         return apiKey;
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }
