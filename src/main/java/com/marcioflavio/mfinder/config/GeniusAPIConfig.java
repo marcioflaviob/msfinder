@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.client.RestTemplate;
 
+import com.marcioflavio.mfinder.CorsFilter;
+
 @Configuration
 @PropertySource("classpath:application.properties")
 public class GeniusAPIConfig {
@@ -20,6 +22,11 @@ public class GeniusAPIConfig {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        return new CorsFilter();
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marcioflavio.mfinder.entity.GPTRequest;
+import com.marcioflavio.mfinder.entity.Song;
 import com.marcioflavio.mfinder.service.GPTService;
 
 @RestController
@@ -19,6 +20,12 @@ public class GPTController {
     public GPTController(GPTService gptService) {
         this.gptService = gptService;
     }
+/*
+    @PostMapping
+    public String submit(Song song) {
+        String songinfo = "";
+        return gptService.getAnswer(songinfo);
+    }*/
 
     @PostMapping
     public String chat(@RequestBody GPTRequest gptRequest) {

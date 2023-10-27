@@ -15,7 +15,10 @@ public class MovieSongFinderApplication {
         /*GLA gla = new GLA();
         System.out.println("Searching...");
         long startMs = System.currentTimeMillis();
-        System.out.println(gla.search("lucid dreams").getHits().get(0).fetchLyrics());
+		System.out.println(gla.search("eu tenho medo").getHits().get(0).getTitle());
+		System.out.println(gla.search("eu tenho medo").getHits().get(0).getArtist().getName());
+		System.out.println(gla.search("eu tenho medo").getHits().get(0).getThumbnailUrl());
+        System.out.println(gla.search("eu tenho medo").getHits().get(0).fetchLyrics());
         System.out.println(System.currentTimeMillis() - startMs + "ms");*/
 	}
 
