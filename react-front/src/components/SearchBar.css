@@ -25,3 +25,20 @@ input:focus {
 #search-icon {
     color: royalblue;
 }
+
+.header-title {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+footer {
+    bottom: 2%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+}
+
+footer .links {
+    align-items: center;
+}

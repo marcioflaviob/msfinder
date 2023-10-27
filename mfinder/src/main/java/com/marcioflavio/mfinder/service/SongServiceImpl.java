@@ -18,5 +18,12 @@ public class SongServiceImpl implements SongService {
         GLA gla = new GLA();
         return gla.search(query).getHits();
     }
+
+    @Override
+    public Song addSong(Long id, String title, String artist, String thumbUrl, String lyrics) {
+        return new Song(id, title, artist, thumbUrl, lyrics);
+    }
+
+    
     
 }

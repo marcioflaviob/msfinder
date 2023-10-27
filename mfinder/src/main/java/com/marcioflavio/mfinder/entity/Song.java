@@ -13,8 +13,8 @@ public class Song {
     
     private Long id;
     private String title;
-    private String thumbnailUrl;
     private String artist;
+    private String thumbnailUrl;
     private String lyrics;
 
 }

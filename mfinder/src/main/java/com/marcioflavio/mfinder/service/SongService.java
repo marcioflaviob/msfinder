@@ -11,5 +11,6 @@ import genius.SongSearch.Hit;
 public interface SongService {
 
     public LinkedList<Hit> search(String query) throws IOException;
+    public Song addSong(Long id, String title, String artist, String thumbUrl, String lyrics);
     
 }
