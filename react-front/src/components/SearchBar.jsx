@@ -10,9 +10,9 @@ export const SearchBar = ({setResults}) => {
         fetch("http://localhost:8080/songsearch?q=" + input)
             .then((response) => response.json())
             .then((json) => {
+                setResults(json);
                 console.log(json);
-        });
-        setResults(results);
+            });
     };
 
     const handleChange = (value) => {

@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Song {
     
+    private Long id;
     private String title;
-    private String titleFeat;
     private String thumbnailUrl;
     private String artist;
     private String lyrics;

@@ -18,6 +18,7 @@ import com.marcioflavio.mfinder.entity.Song;
 import com.marcioflavio.mfinder.service.SongService;
 
 import genius.SongSearch.Hit;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/songsearch")
@@ -27,7 +28,8 @@ public class SongController {
     SongService songService;
 
     @GetMapping
-    public ResponseEntity<LinkedList<Hit>> searchSongs(@RequestParam String q) throws IOException {
+    public ResponseEntity<LinkedList<Hit>> searchSongs(@RequestParam String q, HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("UTF-8");
         return new ResponseEntity<LinkedList<Hit>>(songService.search(q), HttpStatus.OK);
     }
     
