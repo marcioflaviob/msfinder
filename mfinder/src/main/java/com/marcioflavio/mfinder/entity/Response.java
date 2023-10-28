@@ -9,12 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Song {
-    
-    private String id;
-    private String title;
-    private String artist;
-    private String thumbnailUrl;
-    private String lyrics;
+public class Response {
 
+    Song song;
+    GPTRequest gptRequest;
+    
 }

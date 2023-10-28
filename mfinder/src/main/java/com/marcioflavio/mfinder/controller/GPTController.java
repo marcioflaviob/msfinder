@@ -29,8 +29,8 @@ public class GPTController {
 
     @PostMapping
     public String chat(@RequestBody GPTRequest gptRequest) {
-        String message = gptRequest.getMessage();
-        System.out.println(gptRequest.getMessage());
-        return gptService.getAnswer(message);
+        //String message = gptRequest.getMessage();
+        //System.out.println(gptRequest.getMessage());
+        return null;
     }
 }

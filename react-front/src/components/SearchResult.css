@@ -20,4 +20,5 @@
 
 .search-result:hover {
     background-color: #efefef;
+    cursor: pointer;
 }

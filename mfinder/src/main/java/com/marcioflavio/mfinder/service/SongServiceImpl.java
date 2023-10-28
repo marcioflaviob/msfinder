@@ -20,7 +20,7 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public Song addSong(Long id, String title, String artist, String thumbUrl, String lyrics) {
+    public Song addSong(String id, String title, String artist, String thumbUrl, String lyrics) {
         return new Song(id, title, artist, thumbUrl, lyrics);
     }
 

@@ -32,6 +32,7 @@ input:focus {
 }
 
 footer {
+    position: fixed;
     bottom: 2%;
     left: 50%;
     right: 50%;
