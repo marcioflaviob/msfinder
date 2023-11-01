@@ -81,7 +81,7 @@ public class GeniusAPIServiceImpl implements GeniusAPIService {
         } catch (IOException e) {
             return null;
         }
-        //This next part of code was retrieved, but modified, from (https://github.com/LowLevelSubmarine/GeniusLyricsAPI) to remove the parts we don't want from the lyrics. Thanks :)
+        
         //Remove start
         lyrics = lyrics.replaceAll("[\\S\\s]*<div class=\\\\\\\\\\\\\"rg_embed_body\\\\\\\\\\\\\">[ (\\\\\\\\n)]*", "");
         //Remove end
@@ -89,11 +89,11 @@ public class GeniusAPIServiceImpl implements GeniusAPIService {
         //Remove tags between
         lyrics = lyrics.replaceAll("<[^<>]*>", "");
         //Unescape spaces
-        lyrics = lyrics.replaceAll("\\\\\\\\n","[LINE BREAK]");
+        lyrics = lyrics.replaceAll("\\\\\\\\n","[LINE BREAK]"); //The line breaks were not working in the JSON
         //Unescape '
         lyrics = lyrics.replaceAll("\\\\'", "'");
         //Unescape "
-        lyrics = lyrics.replaceAll("\\\\\\\\\\\\\"", ""); //TODO fix this, when a lyrics has a " the json doesnt work
+        lyrics = lyrics.replaceAll("\\\\\\\\\\\\\"", ""); //The " was confliting with the JSON, so I removed it
         return lyrics;
     }
     

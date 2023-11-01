@@ -43,7 +43,7 @@ public class GeniusController {
         song.setLyrics(geniusAPIService.getLyrics(song.getId()));
         response.setSong(song);
         //gptRequest.setMessage(gptService.getAnswer(song));
-        gptRequest = gptService.breakResponse(gptService.getAnswer(song)); // Send the song to GPT, and formats its response.
+        //gptRequest = gptService.breakResponse(gptService.getAnswer(song)); // Send the song to GPT, and formats its response.
         response.setGptRequest(gptRequest);
         return new ResponseEntity<Response>(response, HttpStatus.OK);
     }

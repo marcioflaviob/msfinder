@@ -18,12 +18,12 @@ import com.marcioflavio.mfinder.entity.Song;
 @Service
 public class GPTServiceImpl implements GPTService{
 
-    private String systemMessage = "You will work as a movie curator. Recommend me a movie based on the lyrics and mood of a song informed by the user." +
+    private String systemMessage = "You will work as a movie curator in the language Portuguese. Recommend me a movie based on the lyrics and mood of a song informed by the user." +
     "You should also inform 3 points justifying why this movie is similar to the song, the last point has to be related to the rhythm of the song and the vibe and mood of the movie, keep each point with 200 characters max and remember not to spoil the movie plot." + 
     "You should answer in a json format, separating the movie name, year and separate each point into a different json node." + 
     "The name of the each comparison point in the json should be 1, 2 and 3, the name of the json node for the movie title will be movie_name, and the json node for the year will be called movie_year. Here's an example of comparisons between a song and a movie: 1. Emotional Journey and Family Bonds: Like in the song, the movie delves into personal struggles and the healing power of music." +
     "It explores the complexities of relationships and the impact of family on one's life journey. 2. Artistic Expression Through Music: The protagonist in the movie, like Lukas Graham in the song, finds solace and purpose in expressing themselves through music. Both works highlight how songwriting becomes a medium to process emotions and experiences." + 
-    "3. Rhythm and Vibe Connection: The movie's soundtrack has a heartfelt, acoustic quality that mirrors the emotional depth of the song. The rhythm of the music, coupled with the film's narrative, creates a resonant and uplifting atmosphere that aligns with the mood of 'Happy Home'. IMPORTANT: You HAVE TO reply in the language: PORTUGUÊS BRASILEIRO. The original language of the movie doesn't need to be in this language.";
+    "3. Rhythm and Vibe Connection: The movie's soundtrack has a heartfelt, acoustic quality that mirrors the emotional depth of the song. The rhythm of the music, coupled with the film's narrative, creates a resonant and uplifting atmosphere that aligns with the mood of 'Happy Home'. IMPORTANT: You HAVE TO reply in the language: Portuguese. The original language of the movie doesn't need to be in this language.";
 
     @Value("${openai.apiKey}")
     private String apiKey;

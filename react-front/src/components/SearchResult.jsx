@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import Loading from './Loading';
 
 import "./SearchResult.css"
 
-export const SearchResult = ({result}) => {
+export const SearchResult = ({result, setLoading}) => {
 
     const onClick = async () => {
         try {
+            setLoading(true);
+
             const response = await fetch('http://localhost:8080/results', {
               method: 'POST',
               headers: {
@@ -16,6 +20,9 @@ export const SearchResult = ({result}) => {
       
             const data = await response.json();
             console.log(data); // Received the json.
+
+            setLoading(false);
+
           } catch (error) {
             console.error('Error:', error);
           }
