@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import { SearchBar } from './components/SearchBar'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchResultsList } from './components/SearchResultsList';
 import { LanguageSelector } from './components/LanguageSelector'
 import Loading from './components/Loading'
+import ResultsPage from './ResultsPage';
 
 
 function App() {
 
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(loading);
+  const [selected, setSelected] = useState(false);
 
   return (
     <div className="App">
       {loading && <div className="App-loading">
-        <Loading loading={loading}/>
+        <Loading selected={selected} loading={loading}/>
         </div>}
       <div className="search-bar-container">
-        <LanguageSelector />
-        <SearchBar setResults={setResults} />
-        <SearchResultsList results={results} setLoading={setLoading} />
+        <LanguageSelector selected={selected} setSelected={setSelected} />
+        <SearchBar selected={selected} setResults={setResults} />
+        <SearchResultsList selected={selected} results={results} setLoading={setLoading} />
       </div>
     </div>
   )

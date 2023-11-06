@@ -9,10 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Response {
+public class Movie {
 
-    Song song;
-    GPTRequest gptRequest;
-    Movie movie;
+    String title;
+    String year;
+    String overview;
+    String posterURL;
     
 }

@@ -53,7 +53,7 @@ public class GeniusAPIServiceImpl implements GeniusAPIService {
             String title = song.get("result").get("title").asText();
             String artist = song.get("result").get("artist_names").asText();
             String thumbUrl = song.get("result").get("header_image_thumbnail_url").asText();
-            String lyrics = "Not yet necessary"; //We don't need the lyrics at the moment, so to make the json file shorter, I'm not going to pass it here.
+            String lyrics = "Not yet necessary"; //We don't need the lyrics at the moment, so to make the json shorter, I'm not going to pass it here.
 
             songs.add(songService.addSong(id, title, artist, thumbUrl, lyrics));
         }

@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 
 import "./LanguageSelector.css"
 
-export const LanguageSelector = () => {
-
-    const [selected, setSelected] = useState(false);
+export const LanguageSelector = ({selected, setSelected}) => {
 
     const onClick = async () => {
         {selected ? setSelected(false) : setSelected(true)}

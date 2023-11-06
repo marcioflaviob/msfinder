@@ -12,5 +12,5 @@ public class GPTRequest {
     private String point1;
     private String point2;
     private String point3;
-    
+
 }
