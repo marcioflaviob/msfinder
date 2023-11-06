@@ -28,7 +28,7 @@ public class TMDBController {
         GPTRequest gptRequest = new GPTRequest();
         gptRequest.setMovieTitle("Batman");
         gptRequest.setYear("2005");
-        return new ResponseEntity<Movie>(tmdbService.searchMovie(gptRequest), HttpStatus.OK);
+        return new ResponseEntity<Movie>(tmdbService.searchMovie(gptRequest, "pt-BR"), HttpStatus.OK);
     }
     
 }

@@ -9,8 +9,6 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -25,15 +23,15 @@ public class TMDBServiceImpl implements TMDBService {
     private String apiKey;
 
     @Override
-    public Movie searchMovie(GPTRequest gptRequest) throws IOException, InterruptedException {
+    public Movie searchMovie(GPTRequest gptRequest, String lang) throws IOException, InterruptedException {
 
         String movieTitle = URLEncoder.encode(gptRequest.getMovieTitle(), StandardCharsets.UTF_8); //Convert the special characters
         String year = "%20&year=" + gptRequest.getYear(); //%20 equals to a space
-        String lang = "&language=en-US";
+        String language = "&language=" + lang;
         
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create("https://api.themoviedb.org/3/search/movie?query=" + movieTitle + year + lang))
+        .uri(URI.create("https://api.themoviedb.org/3/search/movie?query=" + movieTitle + year + language))
         .header("accept", "application/json")
         .header("Authorization", "Bearer " + apiKey)
         .build();

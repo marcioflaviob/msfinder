@@ -7,7 +7,7 @@ import com.marcioflavio.mfinder.entity.Song;
 
 public interface GPTService {
 
-    public String getAnswer(Song song);
+    public String getAnswer(Song song, String lang);
     public GPTRequest breakResponse (String response) throws JsonMappingException, JsonProcessingException;
     
 }

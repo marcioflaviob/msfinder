@@ -14,5 +14,6 @@ public class Response {
     Song song;
     GPTRequest gptRequest;
     Movie movie;
+    String lang;
     
 }
