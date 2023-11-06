@@ -17,7 +17,7 @@ export const ResultsPage = ({ match }) => {
 
   return (
     <div className="results-page">
-      <h2>chosen song</h2>
+      <h2>{data && data.lang == "en-US" ? "chosen song" : "música escolhida"}</h2>
       <div className="song-container">
       {data && (
         <>
@@ -29,7 +29,7 @@ export const ResultsPage = ({ match }) => {
           </>
         )}
       </div>
-      <h2>a movie you should watch</h2>
+      <h2>{data && data.lang == "en-US" ? "a movie you should watch" : "filme que você deveria assistir"}</h2>
       <div className="movie-container">
       {data && (
         <>
@@ -39,7 +39,7 @@ export const ResultsPage = ({ match }) => {
           <div className="title">{data.movie.title} ({data.movie.year})</div>
         </div>
         <div className="all-points">
-          <h3>why are they similar?</h3>
+          <h3>{data && data.lang == "en-US" ? "why are they similar?" : "por que são parecidos?"}</h3>
           <div className="points">{data.gptRequest.point1}</div>
           <div className="points">{data.gptRequest.point2}</div>
           <div className="points">{data.gptRequest.point3}</div>
@@ -47,7 +47,7 @@ export const ResultsPage = ({ match }) => {
         </div>  
         
         <div className="overview">
-          <h1>about the movie</h1>
+          <h1>{data && data.lang == "en-US" ? "about the movie" : "sobre o filme"}</h1>
           <h4>{data.movie.overview}</h4>
         </div>
         </>
