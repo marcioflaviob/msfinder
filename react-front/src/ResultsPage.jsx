@@ -6,6 +6,30 @@ export const ResultsPage = ({ match }) => {
   const [data, setData] = useState(null);
   const params = useParams();
 
+  const onClick = async () => {
+    try {
+        //setLoading(true);
+
+        const response = await fetch("http://localhost:8080/repeat", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+
+        //setData(response);
+        setData(response.json());
+        console.log(data); // Received the json.
+
+        //setLoading(false);
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
   useEffect(() => {
     // Decode the JSON string.
     const decodedData = decodeURIComponent(params.data);
@@ -13,7 +37,8 @@ export const ResultsPage = ({ match }) => {
     // Save the decoded JSON object into a variable.
     setData(JSON.parse(decodedData));
   }, [params.data]); // Only re-run this effect if params.data changes
-  console.log(data);
+
+
 
   return (
     <div className="results-page">
@@ -49,6 +74,7 @@ export const ResultsPage = ({ match }) => {
         <div className="overview">
           <h1>{data && data.lang == "en-US" ? "about the movie" : "sobre o filme"}</h1>
           <h4>{data.movie.overview}</h4>
+          <button onClick={onClick}>Generate another movie</button>
         </div>
         </>
       )}
