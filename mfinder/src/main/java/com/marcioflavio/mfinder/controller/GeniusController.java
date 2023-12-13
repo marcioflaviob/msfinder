@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,7 +50,9 @@ public class GeniusController {
         gptRequest.setPoint1("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
         gptRequest.setPoint2("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
         gptRequest.setPoint3("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
-        //GPTRequest gptRequest = gptService.breakResponse(gptService.getAnswer(song, lang)); // Send the song to GPT, and formats its response.
+        /*
+        GPTRequest gptRequest = gptService.breakResponse(gptService.getAnswer(song, lang)); // Send the song to GPT, and formats its response.
+        */
         Movie movie = tmdbService.searchMovie(gptRequest, lang);
         Response response = new Response(song, gptRequest, movie, lang);
 
@@ -71,7 +74,18 @@ public class GeniusController {
 
     @PostMapping("/repeat")
     public ResponseEntity<Response> newMovie(@RequestBody(required = true) Response response) throws IOException, InterruptedException {
-        GPTRequest gptRequest = gptService.breakResponse(gptService.getNewMovie(response));
+        //GPTRequest gptRequest = gptService.breakResponse(gptService.getNewMovie(response));
+
+    /*
+    */
+    Thread.sleep(3000);
+    GPTRequest gptRequest = new GPTRequest();
+    gptRequest.setMovieTitle("Inside out");
+    gptRequest.setYear("2015");
+    gptRequest.setPoint1("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
+    gptRequest.setPoint2("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
+    gptRequest.setPoint3("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate fermentum pretium. Etiam massa metus, dictum quis velit quis, suscipit viverra nunc. Etiam ante enim, scelerisque quis molestie. ");
+
         Movie movie = tmdbService.searchMovie(gptRequest, response.getLang());
 
         response.setGptRequest(gptRequest);

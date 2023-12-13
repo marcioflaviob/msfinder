@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react' 
+import { useNavigate } from 'react-router-dom'
+import {FaRedoAlt, FaArrowLeft} from "react-icons/fa";
 import { useParams } from 'react-router-dom';
+import Loading from './components/Loading'
 import './ResultsPage.css'
 
 export const ResultsPage = ({ match }) => {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [selected, setSelected] = useState(false); //Language selected
   const params = useParams();
+  const navigateTo = useNavigate();
+
+  const onClickRedirect = async () => {
+    navigateTo('/');
+  }
 
   const onClick = async () => {
     try {
-        //setLoading(true);
+        setLoading(true);
 
         const response = await fetch("http://localhost:8080/repeat", {
           method: 'POST',
@@ -18,12 +28,12 @@ export const ResultsPage = ({ match }) => {
           body: JSON.stringify(data),
         });
 
+        const newData = await response.json();
+        setData(newData);
 
-        //setData(response);
-        setData(response.json());
-        console.log(data); // Received the json.
+        console.log(newData); // Received the json.
 
-        //setLoading(false);
+        setLoading(false);
 
       } catch (error) {
         console.error('Error:', error);
@@ -33,15 +43,20 @@ export const ResultsPage = ({ match }) => {
   useEffect(() => {
     // Decode the JSON string.
     const decodedData = decodeURIComponent(params.data);
-  
     // Save the decoded JSON object into a variable.
     setData(JSON.parse(decodedData));
+    {data && data.lang == "en-US" ? setSelected(false) : setSelected(true)}
   }, [params.data]); // Only re-run this effect if params.data changes
 
 
 
   return (
-    <div className="results-page">
+    
+    <div className='page'>
+      {loading && <div className="page-loading">
+        <Loading selected={selected} loading={loading}/>
+        </div>}
+      <div className="results-page">
       <h2>{data && data.lang == "en-US" ? "chosen song" : "música escolhida"}</h2>
       <div className="song-container">
       {data && (
@@ -74,10 +89,12 @@ export const ResultsPage = ({ match }) => {
         <div className="overview">
           <h1>{data && data.lang == "en-US" ? "about the movie" : "sobre o filme"}</h1>
           <h4>{data.movie.overview}</h4>
-          <button onClick={onClick}>Generate another movie</button>
+          <button onClick={onClickRedirect} class="button-4" role="button"><FaArrowLeft id='react-icon'/> {data && data.lang == "en-US" ? "New song" : "Nova música"}</button>
+          <button onClick={onClick} class="button-3" role="button"><FaRedoAlt id='react-icon'/> {data && data.lang == "en-US" ? "Generate new movie" : "Gerar novo filme"}</button>
         </div>
         </>
       )}
+      </div>
       </div>
     </div>
   )
