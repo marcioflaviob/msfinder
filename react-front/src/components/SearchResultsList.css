@@ -7,5 +7,6 @@
     border-radius: 10px;
     margin-top: 1rem;
     max-height: 380px;
+    max-width: 485px;
     overflow-y: scroll;
 }

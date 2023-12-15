@@ -31,8 +31,6 @@ export const ResultsPage = ({ match }) => {
         const newData = await response.json();
         setData(newData);
 
-        console.log(newData); // Received the json.
-
         setLoading(false);
 
       } catch (error) {

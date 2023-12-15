@@ -1,6 +1,5 @@
 package com.marcioflavio.mfinder.service;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,12 +11,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.marcioflavio.mfinder.entity.GPTRequest;
 import com.marcioflavio.mfinder.entity.Response;
 import com.marcioflavio.mfinder.entity.Song;
-
-import lombok.AllArgsConstructor;
 
 @Service
 public class GPTServiceImpl implements GPTService{
@@ -106,7 +102,7 @@ public class GPTServiceImpl implements GPTService{
 
 
         gptRequest.setMovieTitle(gptMovie.get("movie_name").asText());
-        gptRequest.setYear(gptMovie.get("movie_year").asText().replaceAll("[^0-9]", "")); //Sometimes GPT will add weird characters in the year field, so this will filter it.
+        gptRequest.setYear(gptMovie.get("movie_year").asText().replaceAll("[^0-9]", "")); //GPT might add weird characters in the year field, this will filter it.
         gptRequest.setPoint1(gptMovie.get("1").asText());
         gptRequest.setPoint2(gptMovie.get("2").asText());
         gptRequest.setPoint3(gptMovie.get("3").asText());
