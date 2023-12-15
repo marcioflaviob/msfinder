@@ -7,7 +7,7 @@ export const SearchBar = ({selected, setResults}) => {
     const [input, setInput] = useState("")
 
     const fetchData = (value) => {
-        fetch("http://localhost:8080/search?q=" + input)
+        fetch("http://api.marcioflavio.com:8080/search?q=" + input)
             .then((response) => response.json())
             .then((json) => {
                 setResults(json);

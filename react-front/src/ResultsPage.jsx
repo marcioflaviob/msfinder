@@ -20,7 +20,7 @@ export const ResultsPage = ({ match }) => {
     try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:8080/repeat", {
+        const response = await fetch("http://api.marcioflavio.com:8080/repeat", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

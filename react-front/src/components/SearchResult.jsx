@@ -15,7 +15,7 @@ export const SearchResult = ({selected, result, setLoading}) => {
         try {
             setLoading(true);
 
-            const response = await fetch(selected ? "http://localhost:8080/br" : "http://localhost:8080/en", {
+            const response = await fetch(selected ? "http://api.marcioflavio.com:8080/br" : "http://api.marcioflavio.com:8080/en", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
