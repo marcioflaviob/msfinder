@@ -6,42 +6,42 @@ import ResultsPage from '../ResultsPage';
 
 import "./SearchResult.css"
 
-export const SearchResult = ({selected, result, setLoading}) => {
+export const SearchResult = ({ selected, result, setLoading }) => {
 
-    const [data, setData] = useState(null);
-    const navigateTo = useNavigate();
+  const [data, setData] = useState(null);
+  const navigateTo = useNavigate();
 
-    const onClick = async () => {
-        try {
-            setLoading(true);
+  const onClick = async () => {
+    try {
+      setLoading(true);
 
-            const response = await fetch(selected ? "http://api.marcioflavio.com:8080/br" : "http://api.marcioflavio.com:8080/en", {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(result),
-            });
+      const response = await fetch(selected ? "http://api.marcioflavio.com:8080/br" : "http://api.marcioflavio.com:8080/en", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(result),
+      });
 
-            const data = await response.json();
-            setData(data);
-            console.log(data); // Received the json.
+      const data = await response.json();
+      setData(data);
+      console.log(data); // Received the json.
 
-            setLoading(false);
-            const encodedData = encodeURIComponent(JSON.stringify(data));
-            navigateTo(`/${encodedData}`);
+      setLoading(false);
+      const encodedData = encodeURIComponent(JSON.stringify(data));
+      navigateTo(`/${encodedData}`);
 
-          } catch (error) {
-            console.error('Error:', error);
-          }
-        };
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <div className="search-result" onClick={onClick}>
-        <div className="img"><img src={result.thumbnailUrl} width="50"></img></div>
-        <div className="names">
-            <div className="title">{result.title.toLowerCase()}</div>
-            <div className="artist">{result.artist.toLowerCase()}</div>
-        </div>
+      <div className="img"><img src={result.thumbnailUrl} width="50"></img></div>
+      <div className="names">
+        <div className="title">{result.title.toLowerCase()}</div>
+        <div className="artist">{result.artist.toLowerCase()}</div>
       </div>
+    </div>
   )
 }

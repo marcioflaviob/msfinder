@@ -17,8 +17,8 @@ function App() {
   return (
     <div className="App">
       {loading && <div className="App-loading">
-        <Loading selected={selected} loading={loading}/>
-        </div>}
+        <Loading selected={selected} loading={loading} />
+      </div>}
       <div className="search-bar-container">
         <LanguageSelector selected={selected} setSelected={setSelected} />
         <SearchBar selected={selected} setResults={setResults} />
